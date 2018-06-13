@@ -1,3 +1,47 @@
-<p>
-  navbar works!
-</p>
+<nav class="uk-navbar-container uk-margin" uk-navbar>
+  <div class="uk-navbar-center">
+
+    <div class="uk-navbar-center-left">
+      <div>
+        <ul class="uk-navbar-nav">
+          <li class="uk-active">
+            <a href="#" routerLink="/login">تسجيل دخول</a>
+          </li>
+          <li>
+            <a href="#">الموظفين</a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li class="uk-active">
+                  <a href="#" routerLink="/allEmployee">عرض الموظفين</a>
+                </li>
+                <li>
+                  <a href="#">تعديل موظف</a>
+                </li>
+                <li>
+                  <a href="#">حذف موظف</a>
+                </li>
+                <li>
+                  <a href="#">اضافة موظف</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a class="uk-navbar-item uk-logo" routerLink="/home">الرئيسية</a>
+    <div class="uk-navbar-center-right">
+      <div>
+        <ul class="uk-navbar-nav">
+          <li>
+            <a href="#">تسجيل خروج</a>
+          </li>
+          <li>
+            <a href="#">الاشتراك في الموقع</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</nav>
