@@ -26,7 +26,7 @@ export class ViewEmployeeComponent implements OnInit {
         }
       }
     );
-    console.log(this.Employees.length);
+    // console.log(this.Employees.length);
   }
 
   getTotalEmployee() {
