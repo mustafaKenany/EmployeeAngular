@@ -1,0 +1,42 @@
+* {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.html,
+body {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 80%;
+  padding: 10px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.col {
+  margin: 10px;
+  padding: 10px;
+  width: 45%;
+  border: 2px solid;
+}
+
+.col label {
+  display: flex;
+}
+
+.col input {
+  padding: 5px;
+  text-align: center;
+  width: 90%;
+}
+
+.error {
+  color: red;
+}

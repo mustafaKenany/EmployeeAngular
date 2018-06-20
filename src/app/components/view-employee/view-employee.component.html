@@ -1,4 +1,9 @@
 <div class="container">
+  <a href="" routerLink="/addEmployee">
+    <button>
+      Add Employee
+    </button>
+  </a>
   <div *ngIf="EmployeeFlag; else elseBlock">
     <table>
       <th>#</th>
@@ -21,7 +26,7 @@
           <td>{{item.phone}}</td>
           <td>{{item.salary}}</td>
           <td>
-            <a href="">
+            <a href="" routerLink="/editEmployee/{{item.$key}}">
               <button>
                 More Info
               </button>

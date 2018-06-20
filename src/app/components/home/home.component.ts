@@ -5,9 +5,7 @@
 // import {EmployeeInfoComponent} from '../../Employee';
 
 import { Component, OnInit } from '@angular/core';
-// interface
 import { EmployeeInfoComponent } from '../../Employee';
-//services
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
@@ -37,12 +35,12 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.employeeService.getEmployee().snapshotChanges().subscribe(
-      employees => {
-        this.Employees = this.employeeService.Employee;
-        console.log(this.Employees)
-      }
-    )
+    // this.employeeService.getEmployee().snapshotChanges().subscribe(
+    //   employees => {
+    //     this.Employees = this.employeeService.Employee;
+    //     console.log(this.Employees);
+    //   }
+    // );
 
   }
 

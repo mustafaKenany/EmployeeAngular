@@ -13,6 +13,10 @@ export class EmployeeService {
 
   dbemployees: AngularFireList<any[]>;
   Employee = [];
+  employeeArrayLenght: number;
+  employee: EmployeeInfoComponent;
+
+
   constructor(public db: AngularFireDatabase) {
     this.dbemployees = this.db.list('employees');
     this.dbemployees.snapshotChanges().subscribe(actions => {
@@ -22,9 +26,32 @@ export class EmployeeService {
         this.Employee.push(y as EmployeeInfoComponent);
       });
     });
+    this.Employee = [];
   }
 
   getEmployee() {
     return this.dbemployees;
   }
+  addEmployee(employee: EmployeeInfoComponent[]) {
+    this.Employee = [];
+    console.log(employee);
+    return this.dbemployees.push(employee);
+
+  }
+  searchEmployee(employeeID: any) {
+    // this.Employee = [];
+    let y;
+    this.dbemployees = this.db.list('employees');
+    this.dbemployees.snapshotChanges().subscribe(actions => {
+      actions.forEach(action => {
+        y = action.payload.toJSON();
+        y['$key'] = action.payload.key;
+        if (y['$key'] === employeeID) {
+          this.Employee.push(y as EmployeeInfoComponent);
+          return y;
+        }
+      });
+    });
+  }
+
 }

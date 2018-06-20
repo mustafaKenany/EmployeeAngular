@@ -4,7 +4,7 @@ export interface EmployeeInfoComponent {
     firstName?: string;
     lastName?: string;
     email?: string;
-    Country?: string;
+    country?: string;
     city?: string;
     phone?: number;
     salary?: number;

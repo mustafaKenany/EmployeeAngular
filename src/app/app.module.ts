@@ -1,7 +1,7 @@
 import { environment } from './../environments/environment';
 import { EmployeeService } from './services/employee.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireModule } from 'angularfire2';
@@ -9,8 +9,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database'
-
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeInfoComponent } from './components/employee-info/employee-info.component';
@@ -41,10 +41,18 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path:'allEmployee',
-    component:ViewEmployeeComponent
+    path: 'allEmployee',
+    component: ViewEmployeeComponent
+  },
+  {
+    path: 'addEmployee',
+    component: AddEmployeeComponent
+  },
+  {
+    path: 'editEmployee/:id',
+    component: EditEmployeeComponent
   }
-]
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,8 +75,9 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule,// imports firebase/storage only needed for storage features
-    AngularFireDatabaseModule
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   providers: [
     EmployeeService
@@ -77,4 +86,4 @@ const appRoutes: Routes = [
 })
 export class AppModule {
 
- }
+}

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// interface
 import { EmployeeInfoComponent } from '../../Employee';
 import { EmployeeService } from '../../services/employee.service';
 @Component({
@@ -13,20 +12,21 @@ export class ViewEmployeeComponent implements OnInit {
   EmployeeFlag = false;
   totalEmployee: number;
   totalEmployeeSalary: number;
-  constructor(public employeeService: EmployeeService) { }
+  arrayLength: number;
+  constructor(public employeeService: EmployeeService) {
+  }
 
   ngOnInit() {
     this.employeeService.getEmployee().snapshotChanges().subscribe(
       employees => {
         if (this.employeeService.Employee) {
           this.Employees = this.employeeService.Employee;
-          console.log('Employees');
-          console.log(this.Employees);
           this.EmployeeFlag = true;
         }
+        // this.getTotalEmployee();
+
       }
     );
-    // console.log(this.Employees.length);
   }
 
   getTotalEmployee() {
@@ -34,7 +34,7 @@ export class ViewEmployeeComponent implements OnInit {
       this.totalEmployee += 1;
       this.totalEmployeeSalary = parseFloat(this.Employees[index].salary.toString());
     }
-    console.log('Total' + this.totalEmployee);
-    console.log('TotalSalary' + this.totalEmployeeSalary);
+    console.log('Total: ' + this.totalEmployee);
+    console.log('TotalSalary: ' + this.totalEmployeeSalary);
   }
 }
