@@ -18,6 +18,7 @@ export class EditEmployeeComponent implements OnInit {
     public activetedRouter: ActivatedRoute) { }
 
   ngOnInit() {
+    this.Employee = null;
     this.employeeID = this.activetedRouter.snapshot.params['id'];
     this.employeeService.searchEmployee(this.employeeID).then(employee => {
       this.Employee = employee as EmployeeInfoComponent;
