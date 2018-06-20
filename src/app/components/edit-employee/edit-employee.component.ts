@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditEmployeeComponent implements OnInit {
   employeeID: any;
-  Employee: any;
+  Employee: EmployeeInfoComponent;
   hasSalary = false;
   updatedSalary = false;
   constructor(public employeeService: EmployeeService, public router: Router,
@@ -19,13 +19,11 @@ export class EditEmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.employeeID = this.activetedRouter.snapshot.params['id'];
-    console.log('Edit-Employee Componetes');
-    console.log(this.employeeID);
-    this.employeeService.searchEmployee(this.employeeID);
-    // this.Employee = this.employeeService.searchEmployee(this.employeeID);
-    // console.log(this.Employee);
+    this.employeeService.searchEmployee(this.employeeID).then(employee => {
+      this.Employee = employee as EmployeeInfoComponent;
+      console.log(this.Employee.city);
 
-
+    });
   }
 
 }
