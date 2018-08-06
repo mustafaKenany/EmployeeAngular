@@ -4,27 +4,11 @@
     <div class="uk-navbar-center-left">
       <div>
         <ul class="uk-navbar-nav">
-          <li class="uk-active">
+          <li class="uk-active" *ngIf="!isLoggedIn">
             <a href="#" routerLink="/login">تسجيل دخول</a>
           </li>
-          <li>
-            <a href="#">الموظفين</a>
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li class="uk-active">
-                  <a href="#" routerLink="/allEmployee">عرض الموظفين</a>
-                </li>
-                <li>
-                  <a href="#">تعديل موظف</a>
-                </li>
-                <li>
-                  <a href="#">حذف موظف</a>
-                </li>
-                <li>
-                  <a href="#" routerLink="/addEmployee">اضافة موظف</a>
-                </li>
-              </ul>
-            </div>
+          <li *ngIf="isLoggedIn">
+            <a href="#" routerLink="/allEmployee">الموظفين</a>
           </li>
         </ul>
       </div>
@@ -33,11 +17,14 @@
     <div class="uk-navbar-center-right">
       <div>
         <ul class="uk-navbar-nav">
-          <li>
-            <a href="#">تسجيل خروج</a>
+          <li *ngIf="isLoggedIn">
+            <a href="#" (click)="logout()">تسجيل خروج</a>
           </li>
-          <li>
-            <a href="#">الاشتراك في الموقع</a>
+          <li *ngIf="enableRegister">
+            <a href="#" routerLink="/register">الاشتراك في الموقع</a>
+          </li>
+          <li *ngIf="isLoggedIn">
+            <a href="#">{{emailUserLoggedIn}}</a>
           </li>
         </ul>
       </div>

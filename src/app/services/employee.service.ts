@@ -1,9 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { EmployeeInfoComponent } from '../Employee';
-import { AngularFireDatabaseModule, AngularFireList, AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { promise } from 'protractor';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 
 
 
@@ -27,11 +24,11 @@ export class EmployeeService {
         this.Employee.push(y as EmployeeInfoComponent);
       });
     });
-    this.Employee = [];
+    // this.Employee = [];
   }
 
   getEmployee() {
-    return this.dbemployees;
+    return this.Employee;
   }
   addEmployee(employee: EmployeeInfoComponent[]) {
     this.Employee = [];
@@ -41,7 +38,7 @@ export class EmployeeService {
   }
   searchEmployee(employeeID: any) {
     // this.Employee = [];
-    return new Promise((resolve) => {
+    return new Promise<EmployeeInfoComponent>((resolve) => {
       this.dbemployees = this.db.list('employees');
       this.dbemployees.snapshotChanges().subscribe(actions => {
         actions.forEach(action => {
@@ -53,7 +50,15 @@ export class EmployeeService {
         });
       });
     });
+  }
+  editEmployee(employee: EmployeeInfoComponent[], id: any) {
+    this.Employee = [];
+    return this.dbemployees.update(id, employee);
+  }
 
+  deleteEmployee(id: any) {
+    this.Employee = [];
+    return this.dbemployees.remove(id);
   }
 
 }

@@ -1,3 +1,15 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <form action="" novalidate #fo="ngForm">
+    <div class="col">
+      <label for="email">Email:</label>
+      <input type="email" name="email" #employeeemail="ngModel" [(ngModel)]="credintal.email" required>
+      <div class="error" *ngIf="employeeemail.errors?.required && employeeemail.touched">email is Required</div>
+    </div>
+    <div class="col">
+      <label for="password">password:</label>
+      <input type="password" name="password" #employeepassword="ngModel" [(ngModel)]="credintal.password" required>
+      <div class="error" *ngIf="employeepassword.errors?.required && employeepassword.touched">password is Required</div>
+    </div>
+  </form>
+  <button (click)="login(fo)">submit</button>
+</div>

@@ -15,7 +15,9 @@
       <th>phone</th>
       <th>salary</th>
       <th></th>
-      <tbody>
+      <th></th>
+      <th></th>
+      <tbody *ngIf="Employees">
         <tr *ngFor="let item of Employees">
           <td>{{item.$key}}</td>
           <td>{{item.firstName}}</td>
@@ -28,7 +30,19 @@
           <td>
             <a href="" routerLink="/editEmployee/{{item.$key}}">
               <button>
-                More Info
+                Edit
+              </button>
+            </a>
+          </td>
+          <td>
+            <button (click)="deleteEmployee(item.$key)">
+              Del
+            </button>
+          </td>
+          <td>
+            <a href="" routerLink="/editEmployee/{{item.$key}}">
+              <button>
+                More info
               </button>
             </a>
           </td>

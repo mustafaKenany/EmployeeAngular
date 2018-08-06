@@ -1,7 +1,44 @@
-<p>
-  edit-employee works!
-</p>
-<h1>
-  <!-- here there is error  -->
-  {{Employee.firstName}}
-</h1>
+<div class="container">
+  <button routerLink="/allEmployee">All Employee</button>
+  <div *ngIf="employee">
+    <form action="" novalidate #fo="ngForm">
+      <div class="col">
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" #employeeFirstName="ngModel" [(ngModel)]="employee.firstName" required>
+        <div class="error" *ngIf="employeeFirstName.errors?.required && employeeFirstName.touched">First Name is Required</div>
+      </div>
+      <div class="col">
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" #employeelastName="ngModel" [(ngModel)]="employee.lastName" required>
+        <div class="error" *ngIf="employeelastName.errors?.required && employeelastName.touched">Last Name is Required</div>
+      </div>
+      <div class="col">
+        <label for="email">Email:</label>
+        <input type="email" name="email" #employeeemail="ngModel" [(ngModel)]="employee.email" required>
+        <div class="error" *ngIf="employeeemail.errors?.required && employeeemail.touched">email is Required</div>
+      </div>
+      <div class="col">
+        <label for="country">country:</label>
+        <input type="text" name="country" #employeecountry="ngModel" [(ngModel)]="employee.country" required>
+        <div class="error" *ngIf="employeecountry.errors?.required && employeecountry.touched">country is Required</div>
+      </div>
+      <div class="col">
+        <label for="city">city:</label>
+        <input type="text" name="city" #employeecity="ngModel" [(ngModel)]="employee.city" required>
+        <div class="error" *ngIf="employeecity.errors?.required && employeecity.touched">city is Required</div>
+      </div>
+      <div class="col">
+        <label for="phone">phone:</label>
+        <input type="text" name="phone" #employeephone="ngModel" [(ngModel)]="employee.phone" required minlength="12">
+        <div class="error" *ngIf="employeephone.errors?.required && employeephone.touched">phone is Required</div>
+        <div class="error" *ngIf="employeephone.errors?.minlength && employeephone.touched">phone is Required 12 chars</div>
+      </div>
+      <div class="col">
+        <label for="salary">salary:</label>
+        <input type="text" name="salary" [(ngModel)]="employee.salary" [disabled]="disabledSalary" #employeeSalary="ngModel">
+      </div>
+    </form>
+    <button (click)="editEmployee(fo)">OK</button>
+    <button (click)="deleteEmployee()">delete Employee</button>
+  </div>
+</div>
